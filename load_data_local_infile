@@ -1,0 +1,10 @@
+// load data local infileはmysql8では設定が必要な為、通常の入力では上手くいかない。
+// https://mita2db.hateblo.jp/entry/2020/01/13/163218
+// 設定1(mysql内部)
+SET GLOBAL local_infile=on; 
+// 設定2(コマンドプロンプト mysql外部)
+mysql -u root -p --local-infile=1
+
+// これらを実行後に、sqlを実行
+// ※ファイル形式がutf-8であることを確認する。
+load data local infile 'C:\\Users\\testUser\\Desktop\\user.csv' into table user fields terminated by ',';
